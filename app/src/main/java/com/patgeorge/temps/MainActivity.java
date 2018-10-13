@@ -1,13 +1,11 @@
 package com.patgeorge.temps;
 
 import android.Manifest;
-import android.app.DownloadManager;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE);
         }
+
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
