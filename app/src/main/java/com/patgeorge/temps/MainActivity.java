@@ -15,9 +15,10 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
-    public static final String API_KEY = "";
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
+public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://api.openweathermap.org/data/2.5/weather?q=Edinburgh,uk&appid=" + API_KEY;
+
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=Edinburgh,uk&appid=" +
+                BuildConfig.OpenWeatherMapApiKey;
+
         final TextView mFahrenheitView = findViewById(R.id.fahrenheitView);
         final TextView mCelciusView = findViewById(R.id.celsiusView);
         final TextView mStatusView = findViewById(R.id.statusView);
@@ -37,21 +41,19 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        String fahrenheit = "";
-                        String celcius = "";
                         JSONObject resp = null;
 
                         try {
 //                            mStatusView.setText(status + "Resp: " + response.substring(0,500));
                             resp = new JSONObject(response);
-                            double kelvin = resp.getJSONObject("main").getDouble("temp");
+                            DecimalFormat df = new DecimalFormat("#.##");
+                            df.setRoundingMode(RoundingMode.CEILING);
+                            Double kelvin = resp.getJSONObject("main").getDouble("temp");
+                            String fahrenheit = df.format(kelvin * 9/5 - 459.67);
+                            String celcius = df.format(kelvin - 273.15);
 
-                            fahrenheit = Double.toString(kelvin * 9/5 - 459.67);
-                            celcius = Double.toString(kelvin - 273.15);
-
-                            mFahrenheitView.setText(fahrenheit);
-                            mCelciusView.setText(celcius);
+                            mFahrenheitView.setText(fahrenheit + "° F");
+                            mCelciusView.setText(celcius + "° C");
                         } catch (Exception e) {
                             mStatusView.setText(status + "Error: " + resp.toString());
                         }
