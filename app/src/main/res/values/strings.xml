@@ -2,4 +2,6 @@
     <string name="app_name">Temps</string>
     <string name="fahrenheitText">F</string>
     <string name="celsiusText">C</string>
+    <string name="appwidget_text">testing</string>
+    <string name="add_widget">Add widget</string>
 </resources>
