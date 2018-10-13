@@ -6,5 +6,5 @@
     android:minHeight="40dp"
     android:previewImage="@drawable/temps_widget_preview"
     android:resizeMode="horizontal"
-    android:updatePeriodMillis="86400000"
+    android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen"></appwidget-provider>
