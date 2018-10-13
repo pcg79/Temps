@@ -45,12 +45,12 @@ public class Widget extends AppWidgetProvider {
                             df.setRoundingMode(RoundingMode.CEILING);
                             Double kelvin = resp.getJSONObject("main").getDouble("temp");
                             String fahrenheit = df.format(kelvin * 9/5 - 459.67);
-                            String celcius = df.format(kelvin - 273.15);
+                            String celsius = df.format(kelvin - 273.15);
 
                             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
                             views.setTextViewText(R.id.wFahrenheitView, fahrenheit + "°F");
-                            views.setTextViewText(R.id.wCelsiusView, celcius + "°C");
+                            views.setTextViewText(R.id.wCelsiusView, celsius + "°C");
 
                             // Instruct the widget manager to update the widget
                             appWidgetManager.updateAppWidget(appWidgetId, views);

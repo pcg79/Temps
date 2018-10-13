@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 BuildConfig.OpenWeatherMapApiKey;
 
         final TextView mFahrenheitView = findViewById(R.id.fahrenheitView);
-        final TextView mCelciusView = findViewById(R.id.celsiusView);
+        final TextView mCelsiusView = findViewById(R.id.celsiusView);
         final TextView mStatusView = findViewById(R.id.statusView);
 
         final String status = "Calling: " + url + "\n";
@@ -58,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
                             df.setRoundingMode(RoundingMode.CEILING);
                             Double kelvin = resp.getJSONObject("main").getDouble("temp");
                             String fahrenheit = df.format(kelvin * 9/5 - 459.67);
-                            String celcius = df.format(kelvin - 273.15);
+                            String celsius = df.format(kelvin - 273.15);
 
                             mFahrenheitView.setText(fahrenheit + "° F");
-                            mCelciusView.setText(celcius + "° C");
+                            mCelsiusView.setText(celsius + "° C");
                         } catch (Exception e) {
                             mStatusView.setText(status + "Error: " + resp.toString());
                         }

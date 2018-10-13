@@ -1,7 +1,7 @@
 # Temps
 First try at an android app
 
-As an American living in the UK I'm still getting used to doing the conversion to and from Celcius.  In order to start
+As an American living in the UK I'm still getting used to doing the conversion to and from Celsius.  In order to start
 recognizing one for the other I want to be able to see them side by side.  But there aren't any existing apps I could
 find that do that.  So I wrote one.
 
